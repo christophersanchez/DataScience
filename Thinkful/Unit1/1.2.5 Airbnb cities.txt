@@ -1,0 +1,69 @@
+What's the most expensive listing? What else can you tell me about the listing?
+
+SELECT
+	listings.price price,
+	listings.name,
+	listings.room_type,
+	listings.minimum_nights,
+	listings.number_of_reviews
+FROM
+	listings
+ORDER by price DESC
+
+price: "9999"	name: "LOHI! MBR w jacuzzi!! Walk to Downtown or Broncos"	 room type: "Private room"	minimum of "2" nights	"8" reviews neighborhood: Highland
+
+
+What neighborhoods seem to be the most popular?
+
+SELECT
+	listings.availability_365,
+	listings.neighbourhood neighbourhood,
+	listings.number_of_reviews,
+	listings.calculated_host_listings_count
+FROM
+	listings
+GROUP by neighbourhood 
+ORDER by 3 DESC
+
+top 3 highest reviews:
+"Barnum"
+"Skyland"
+"Goldsmith"
+
+top 3 listing count:
+"Auraria"
+"Sun Valley"
+"Overland"
+
+available 365 days a year:
+"Cherry Creek"
+"Cole"
+"Country Club"
+"Marston"
+"Montclair"
+
+available 0 days a year:
+"Athmar Park"
+"Indian Creek"
+"Jefferson Park"
+"North Capitol Hill"
+"Regis"
+"Ruby Hill"
+"Union Station"
+"University Park"
+"Virginia Village"
+"Washington Park"
+"Washington Virginia Vale"
+
+
+What time of year is the cheapest time to go to your city? What about the busiest?
+
+SELECT
+	listings.price,
+	listings.last_review
+FROM
+	listings
+GROUP by neighbourhood 
+ORDER by 1 DESC
+
+The winter months seem to be the most popular and cheapest times.

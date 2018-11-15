@@ -1,0 +1,95 @@
+with raindays as (
+SELECT
+Date weatherdate
+FROM 
+weather
+WHERE
+Events = "Rain"
+GROUP BY weatherdate
+)
+
+SELECT
+start_date startdate,
+duration
+FROM 
+trips
+JOIN
+raindays
+ON
+startdate = weatherdate
+ORDER BY duration DESC
+    
+TRIPS:
+1173890
+1009870
+1210487
+ARE THE LONGEST.
+
+
+
+
+SELECT
+	status.station_id,
+	stations.name,
+	COUNT(CASE WHEN docks_available=0 then 1 END) fullmostoften
+FROM
+	Status
+JOIN 
+	stations
+ON
+	stations.station_id = status.station_id
+GROUP by 1
+ORDER by fullmostoften DESC
+
+Full most often = San Francisco Caltrain (Townsend at 4th)
+
+
+
+
+SELECT
+start_station,
+dockcount,
+COUNT(*)
+FROM 
+trips
+JOIN 
+stations
+on 
+stations.name = trips.start_station
+GROUP BY 1, 2
+order by 2 DESC
+
+
+
+
+
+with rainydays
+as(
+SELECT
+	Date
+FROM 
+weather
+WHERE
+Events = 'Rain'
+GROUP by Date
+),
+tripsinrain as (
+SELECT
+trip_id,
+duration,
+DATE(start_date) trip_date
+FROM trips
+JOIN rainydays
+on rainydays.date = trip_date
+ORDER BY duration DESC
+)
+
+SELECT 
+trip_date,
+max(duration) duration
+from tripsinrain
+GROUP BY 1
+ORDER by duration DESC
+
+
+longest duration = 2016-04-22, 85900 

@@ -1,0 +1,25 @@
+SELECT 
+	trip_id,
+	duration
+FROM 
+	trips
+WHERE 
+	duration > 500
+ORDER by duration
+
+
+SELECT 
+	*
+FROM 
+	stations
+where
+	station_id = 84
+    
+    
+SELECT 
+	MinTemperatureF
+FROM 
+	weather
+WHERE 
+	zip = 94301 AND
+	Events = 'Rain'

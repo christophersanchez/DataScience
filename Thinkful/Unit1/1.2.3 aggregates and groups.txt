@@ -1,0 +1,30 @@
+SELECT 
+	MaxTemperatureF,
+	zip,
+	max(MaxTemperatureF) highest
+FROM 
+	weather
+    
+    
+SELECT 
+	start_station,
+	count(*) count
+FROM 
+	trips
+GROUP by 1
+ORDER BY count DESC
+
+SELECT 
+	duration
+from
+	trips
+ORDER BY duration
+
+
+SELECT 
+	duration,
+	end_station,
+	AVG(duration)
+FROM 
+	trips
+GROUP by 2
